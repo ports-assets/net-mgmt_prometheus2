@@ -19,6 +19,8 @@ The following packages are required to build the assets:
 The assets are built as follows:
 
   - Check out the [Prometheus repository] and `cd` to the directory
+  - Checkout the appropriate tag
+    - eg. `git checkout v2.14.0`
   - Run `gmake assets`
     - This will compile the [React] UI and generate a [Go] file at
       `web/ui/assets_vfsdata.go`
@@ -26,7 +28,7 @@ The assets are built as follows:
     path, `web/ui/assets_vfsdata.go`
   - Create a new tag that matches the version of Prometheus that the asset was
     generated for
-    - eg. `git tag -m "Tagging 2.14.0" 2.14.0`
+    - eg. `git tag -m "Tagging v2.14.0" v2.14.0`
   - Push the commits and tags to GitHub
     - `git push && git push --tags`
   - Test and submit the updated `net-mgmt/prometheus2` port as usual
