@@ -1,7 +1,7 @@
 # `net-mgmt/prometheus2` assets
 
 This repository contains pre-compiled assets for the [FreeBSD]
-`net-mgmt/prometheus2` [Prometheus] port.
+[`net-mgmt/prometheus2`] [Prometheus] port.
 It is not possible to build these with the rest of the port, as [Yarn] requires
 Internet access to download various dependencies.
 
@@ -36,6 +36,7 @@ The assets are built as follows:
 <!-- document links -->
 [`devel/gmake`]: https://www.freshports.org/devel/gmake
 [`lang/go`]: https://www.freshports.org/lang/go
+[`net-mgmt/prometheus2`]: https://github.com/freebsd/freebsd-ports/tree/master/net-mgmt/prometheus2
 [`www/node10`]: https://www.freshports.org/www/node10
 [`www/yarn-node10`]: https://www.freshports.org/www/yarn-node10
 [FreeBSD]: https://www.freebsd.org/
