@@ -33,6 +33,12 @@ The assets are built as follows:
     - `git push && git push --tags`
   - Test and submit the updated `net-mgmt/prometheus2` port as usual
 
+In addition to building the asset manually as shown above, there is a helper
+script named `makeasset.sh`. The script will perform the checkout of Prometheus
+at a specified version, followed by the compilation of the asset, and copying
+it into the correct location within the repository. Committing the asset to the
+repository, tagging, and pushing the new version remain manual operations.
+
 <!-- document links -->
 [`devel/gmake`]: https://www.freshports.org/devel/gmake
 [`lang/go`]: https://www.freshports.org/lang/go
