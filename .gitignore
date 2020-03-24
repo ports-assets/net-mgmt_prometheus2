@@ -1,2 +1,5 @@
 *.swp
 *~
+
+# Checked out during makeasset.sh script
+prometheus/
