@@ -2,6 +2,9 @@
 # Path to the asset file
 asset_file="web/ui/assets_vfsdata.go"
 
+# Directory we clone upstream to.
+clone_dir="prometheus"
+
 # Upstream Prometheus repo
 prometheus_repo="https://github.com/prometheus/prometheus.git"
 
@@ -41,7 +44,6 @@ copy_asset() {
 # Entry point
 main() {
     local version="$1"
-    local clone_dir="prometheus"
 
     if [ -z "${version}" ]; then
         echo "Must provide a Prometheus version (tag or branch) to clone" >&2
