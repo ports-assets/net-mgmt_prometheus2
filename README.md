@@ -5,6 +5,9 @@ This repository contains pre-compiled assets for the [FreeBSD]
 It is not possible to build these with the rest of the port, as [Yarn] requires
 Internet access to download various dependencies.
 
+There may be multiple tags pointing at the same commit in this repository if
+the compiled assets do not change between Prometheus versions.
+
 ## Required Packages
 
 The following packages are required to build the assets:
