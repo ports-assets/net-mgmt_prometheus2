@@ -51,6 +51,11 @@ main() {
         exit 1
     fi
 
+    if [ -d "${clone_dir}" ]; then
+        echo "Clone directory '${clone_dir}' already exists, rm it to continue" >&2
+        exit 1
+    fi
+
     clone "${prometheus_repo}" "${version}" "${clone_dir}"
     make_asset "${clone_dir}"
     copy_asset "${clone_dir}"
