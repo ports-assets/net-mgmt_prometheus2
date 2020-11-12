@@ -51,6 +51,12 @@ main() {
         exit 1
     fi
 
+    if ! echo "${version}" | grep --quiet "^v"; then
+        echo "Prometheus versions must be prefixed with 'v', eg v${version}" >&2
+        echo "Usage: $0 <VERSION>"
+        exit 1
+    fi
+
     if [ -d "${clone_dir}" ]; then
         echo "Clone directory '${clone_dir}' already exists, rm it to continue" >&2
         exit 1
