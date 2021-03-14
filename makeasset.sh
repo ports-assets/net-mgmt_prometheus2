@@ -44,6 +44,7 @@ copy_asset() {
 # Entry point
 main() {
     local version="$1"
+    local output_dir="${clone_dir}-${version}"
 
     if [ -z "${version}" ]; then
         echo "Must provide a Prometheus version (tag or branch) to clone" >&2
@@ -62,9 +63,9 @@ main() {
         exit 1
     fi
 
-    clone "${prometheus_repo}" "${version}" "${clone_dir}"
-    make_asset "${clone_dir}"
-    copy_asset "${clone_dir}"
+    clone "${prometheus_repo}" "${version}" "${output_dir}"
+    make_asset "${output_dir}"
+    copy_asset "${output_dir}"
 }
 
 main "$@"
