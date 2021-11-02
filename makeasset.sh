@@ -1,4 +1,6 @@
 #!/bin/sh
+set -e
+
 # Path to the asset file
 asset_file="web/ui/assets_vfsdata.go"
 
@@ -41,6 +43,16 @@ copy_asset() {
         "${asset_file}"
 }
 
+# Fix the web/ui/module build.sh script, which assumes bash is /bin/bash
+fix_web_ui_module_build_script() {
+    local dir="$1"
+
+    ( \
+        cd "${dir}" \
+        && sed -i.bak 's#bin/bash#usr/bin/env bash#' web/ui/module/build.sh \
+    )
+}
+
 # Entry point
 main() {
     local version="$1"
@@ -64,6 +76,7 @@ main() {
     fi
 
     clone "${prometheus_repo}" "${version}" "${output_dir}"
+    fix_web_ui_module_build_script "${output_dir}"
     make_asset "${output_dir}"
     copy_asset "${output_dir}"
 }
