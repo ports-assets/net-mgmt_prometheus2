@@ -14,8 +14,13 @@ The following packages are required to build the assets:
 
   - [`devel/gmake`]
   - [`lang/go`]
-  - [`www/node10`]
-  - [`www/yarn-node10`]
+  - [`www/node16`]
+  - [`www/yarn-node16`]
+
+Additionally, [`www/npm-node16`] will be required. Currently, FreeBSD's `npm`
+is v6, but this port requires v7+ to build the assets. So this port will just
+be used to install a much newer `npm` as part of `makeassets.sh`.
+Once the version of `npm` in the port is updated, this stage will be removed.
 
 ## Building the Assets
 
@@ -46,8 +51,9 @@ repository, tagging, and pushing the new version remain manual operations.
 [`devel/gmake`]: https://www.freshports.org/devel/gmake
 [`lang/go`]: https://www.freshports.org/lang/go
 [`net-mgmt/prometheus2`]: https://github.com/freebsd/freebsd-ports/tree/master/net-mgmt/prometheus2
-[`www/node10`]: https://www.freshports.org/www/node10
-[`www/yarn-node10`]: https://www.freshports.org/www/yarn-node10
+[`www/node16`]: https://www.freshports.org/www/node16
+[`www/npm-node16`]: https://www.freshports.org/www/npm-node16
+[`www/yarn-node16`]: https://www.freshports.org/www/yarn-node16
 [FreeBSD]: https://www.freebsd.org/
 [Go]: https://golang.org/
 [Prometheus]: https://prometheus.io/
