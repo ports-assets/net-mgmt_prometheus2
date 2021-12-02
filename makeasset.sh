@@ -1,6 +1,13 @@
 #!/bin/sh
 set -e
 
+# NPM will become available here later on in the main function
+npm_path="$(pwd)/node_modules/.bin"
+
+# NPM versions can be found at https://www.npmjs.com/package/npm
+# We try to keep a reasonably modern version
+npm_version="8.1.4"
+
 # Path to the asset file
 asset_file="web/ui/assets_vfsdata.go"
 
@@ -43,14 +50,14 @@ copy_asset() {
         "${asset_file}"
 }
 
-# Fix the web/ui/module build.sh script, which assumes bash is /bin/bash
-fix_web_ui_module_build_script() {
-    local dir="$1"
+# We need a much more up to date npm installing before we can continue with
+# building the frontend.
+# FreeBSD currently only has npm v6, which is too old and won't build things
+# correctly.
+install_npm() {
+    local version="$1"
 
-    ( \
-        cd "${dir}" \
-        && sed -i.bak 's#bin/bash#usr/bin/env bash#' web/ui/module/build.sh \
-    )
+    npm install "npm@${version}"
 }
 
 # Entry point
@@ -75,8 +82,11 @@ main() {
         exit 1
     fi
 
+    # Install the latest npm and add it to the PATH.
+    install_npm "${npm_version}"
+    export PATH="${npm_path}:${PATH}"
+
     clone "${prometheus_repo}" "${version}" "${output_dir}"
-    fix_web_ui_module_build_script "${output_dir}"
     make_asset "${output_dir}"
     copy_asset "${output_dir}"
 }
