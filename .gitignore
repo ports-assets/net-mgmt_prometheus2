@@ -3,6 +3,7 @@
 
 # Random junk from the NPM install
 node_modules/
+package.json
 package-lock.json
 
 # Checked out during makeasset.sh script
